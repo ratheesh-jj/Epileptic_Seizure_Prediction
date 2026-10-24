@@ -1,0 +1,39 @@
+{
+  "description": "Patient-independent split manifest (zero data leakage)",
+  "train": {
+    "patients": [
+      "chb01",
+      "chb03",
+      "chb05",
+      "chb06",
+      "chb07",
+      "chb08",
+      "chb09",
+      "chb10"
+    ],
+    "recordings": 60,
+    "total_windows": 11105,
+    "preictal_windows": 2279,
+    "interictal_windows": 8826
+  },
+  "validation": {
+    "patients": [
+      "chb02",
+      "chb11"
+    ],
+    "recordings": 9,
+    "total_windows": 833,
+    "preictal_windows": 215,
+    "interictal_windows": 618
+  },
+  "test": {
+    "patients": [
+      "chb04",
+      "chb12"
+    ],
+    "recordings": 17,
+    "total_windows": 2626,
+    "preictal_windows": 463,
+    "interictal_windows": 2163
+  }
+}

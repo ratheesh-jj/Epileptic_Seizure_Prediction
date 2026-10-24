@@ -1,0 +1,183 @@
+======================================================================
+CHB-MIT SCALP EEG DATASET INVENTORY AND ANNOTATION AUDIT
+======================================================================
+Dataset root: C:\Users\OMEN\Desktop\Projects\Epilepsy_Seizure_Prediction\dataset\chbmit
+Total EDF recordings found: 686
+Total unique patients: 24
+Recordings with annotated seizures: 141 (out of 686)
+Total annotated seizure events: 198
+Seizures with full 35m preictal in single recording: 91
+
+PATIENT BREAKDOWN:
+----------------------------------------------------------------------
+            recordings  seizure_recordings  total_seizures  full_preictal_seizures
+patient_id                                                                        
+chb01               42                   7               7                       1
+chb02               36                   3               3                       2
+chb03               38                   7               7                       2
+chb04               42                   3               4                       3
+chb05               39                   5               5                       3
+chb06               18                   7              10                       6
+chb07               19                   3               3                       3
+chb08               20                   5               5                       4
+chb09               19                   3               4                       3
+chb10               25                   7               7                       6
+chb11               35                   3               3                       1
+chb12               24                  13              40                       8
+chb13               33                   8              12                       4
+chb14               26                   7               8                       3
+chb15               40                  14              20                       3
+chb16               19                   6              10                       2
+chb17               21                   3               3                       3
+chb18               36                   6               6                       2
+chb19               30                   3               3                       2
+chb20               29                   6               8                       2
+chb21               33                   4               4                       2
+chb22               31                   3               3                       2
+chb23                9                   3               7                       3
+chb24               22                  12              16                       7
+
+======================================================================
+ANNOTATED SEIZURE RECORDINGS DETAIL:
+----------------------------------------------------------------------
+chb01/chb01_03.edf | Duration: 60.0 min | Seizures: 1 | Times: 2996-3036s | Full preictal >=35m: True
+chb01/chb01_04.edf | Duration: 60.0 min | Seizures: 1 | Times: 1467-1494s | Full preictal >=35m: False
+chb01/chb01_15.edf | Duration: 60.0 min | Seizures: 1 | Times: 1732-1772s | Full preictal >=35m: False
+chb01/chb01_16.edf | Duration: 60.0 min | Seizures: 1 | Times: 1015-1066s | Full preictal >=35m: False
+chb01/chb01_18.edf | Duration: 60.0 min | Seizures: 1 | Times: 1720-1810s | Full preictal >=35m: False
+chb01/chb01_21.edf | Duration: 60.0 min | Seizures: 1 | Times: 327-420s | Full preictal >=35m: False
+chb01/chb01_26.edf | Duration: 38.75 min | Seizures: 1 | Times: 1862-1963s | Full preictal >=35m: False
+chb02/chb02_16+.edf | Duration: 60.0 min | Seizures: 1 | Times: 2972-3053s | Full preictal >=35m: True
+chb02/chb02_16.edf | Duration: 15.98 min | Seizures: 1 | Times: 130-212s | Full preictal >=35m: False
+chb02/chb02_19.edf | Duration: 60.0 min | Seizures: 1 | Times: 3369-3378s | Full preictal >=35m: True
+chb03/chb03_01.edf | Duration: 60.0 min | Seizures: 1 | Times: 362-414s | Full preictal >=35m: False
+chb03/chb03_02.edf | Duration: 60.0 min | Seizures: 1 | Times: 731-796s | Full preictal >=35m: False
+chb03/chb03_03.edf | Duration: 60.0 min | Seizures: 1 | Times: 432-501s | Full preictal >=35m: False
+chb03/chb03_04.edf | Duration: 60.0 min | Seizures: 1 | Times: 2162-2214s | Full preictal >=35m: True
+chb03/chb03_34.edf | Duration: 60.0 min | Seizures: 1 | Times: 1982-2029s | Full preictal >=35m: False
+chb03/chb03_35.edf | Duration: 60.0 min | Seizures: 1 | Times: 2592-2656s | Full preictal >=35m: True
+chb03/chb03_36.edf | Duration: 60.0 min | Seizures: 1 | Times: 1725-1778s | Full preictal >=35m: False
+chb04/chb04_05.edf | Duration: 158.93 min | Seizures: 1 | Times: 7804-7853s | Full preictal >=35m: True
+chb04/chb04_08.edf | Duration: 240.0 min | Seizures: 1 | Times: 6446-6557s | Full preictal >=35m: True
+chb04/chb04_28.edf | Duration: 240.38 min | Seizures: 2 | Times: 1679-1781s; 3782-3898s | Full preictal >=35m: True
+chb05/chb05_06.edf | Duration: 60.0 min | Seizures: 1 | Times: 417-532s | Full preictal >=35m: False
+chb05/chb05_13.edf | Duration: 60.0 min | Seizures: 1 | Times: 1086-1196s | Full preictal >=35m: False
+chb05/chb05_16.edf | Duration: 60.0 min | Seizures: 1 | Times: 2317-2413s | Full preictal >=35m: True
+chb05/chb05_17.edf | Duration: 60.0 min | Seizures: 1 | Times: 2451-2571s | Full preictal >=35m: True
+chb05/chb05_22.edf | Duration: 60.0 min | Seizures: 1 | Times: 2348-2465s | Full preictal >=35m: True
+chb06/chb06_01.edf | Duration: 240.45 min | Seizures: 3 | Times: 1724-1738s; 7461-7476s; 13525-13540s | Full preictal >=35m: True
+chb06/chb06_04.edf | Duration: 221.02 min | Seizures: 2 | Times: 327-347s; 6211-6231s | Full preictal >=35m: True
+chb06/chb06_09.edf | Duration: 240.0 min | Seizures: 1 | Times: 12500-12516s | Full preictal >=35m: True
+chb06/chb06_10.edf | Duration: 240.0 min | Seizures: 1 | Times: 10833-10845s | Full preictal >=35m: True
+chb06/chb06_13.edf | Duration: 240.0 min | Seizures: 1 | Times: 506-519s | Full preictal >=35m: False
+chb06/chb06_18.edf | Duration: 132.13 min | Seizures: 1 | Times: 7799-7811s | Full preictal >=35m: True
+chb06/chb06_24.edf | Duration: 240.0 min | Seizures: 1 | Times: 9387-9403s | Full preictal >=35m: True
+chb07/chb07_12.edf | Duration: 240.0 min | Seizures: 1 | Times: 4920-5006s | Full preictal >=35m: True
+chb07/chb07_13.edf | Duration: 62.1 min | Seizures: 1 | Times: 3285-3381s | Full preictal >=35m: True
+chb07/chb07_19.edf | Duration: 240.18 min | Seizures: 1 | Times: 13688-13831s | Full preictal >=35m: True
+chb08/chb08_02.edf | Duration: 60.0 min | Seizures: 1 | Times: 2670-2841s | Full preictal >=35m: True
+chb08/chb08_05.edf | Duration: 60.0 min | Seizures: 1 | Times: 2856-3046s | Full preictal >=35m: True
+chb08/chb08_11.edf | Duration: 60.0 min | Seizures: 1 | Times: 2988-3122s | Full preictal >=35m: True
+chb08/chb08_13.edf | Duration: 60.0 min | Seizures: 1 | Times: 2417-2577s | Full preictal >=35m: True
+chb08/chb08_21.edf | Duration: 60.0 min | Seizures: 1 | Times: 2083-2347s | Full preictal >=35m: False
+chb09/chb09_06.edf | Duration: 239.98 min | Seizures: 1 | Times: 12231-12295s | Full preictal >=35m: True
+chb09/chb09_08.edf | Duration: 240.0 min | Seizures: 2 | Times: 2951-3030s; 9196-9267s | Full preictal >=35m: True
+chb09/chb09_19.edf | Duration: 95.0 min | Seizures: 1 | Times: 5299-5361s | Full preictal >=35m: True
+chb10/chb10_12.edf | Duration: 120.0 min | Seizures: 1 | Times: 6313-6348s | Full preictal >=35m: True
+chb10/chb10_20.edf | Duration: 120.2 min | Seizures: 1 | Times: 6888-6958s | Full preictal >=35m: True
+chb10/chb10_27.edf | Duration: 120.3 min | Seizures: 1 | Times: 2382-2447s | Full preictal >=35m: True
+chb10/chb10_30.edf | Duration: 120.22 min | Seizures: 1 | Times: 3021-3079s | Full preictal >=35m: True
+chb10/chb10_31.edf | Duration: 120.35 min | Seizures: 1 | Times: 3801-3877s | Full preictal >=35m: True
+chb10/chb10_38.edf | Duration: 120.0 min | Seizures: 1 | Times: 4618-4707s | Full preictal >=35m: True
+chb10/chb10_89.edf | Duration: 120.0 min | Seizures: 1 | Times: 1383-1437s | Full preictal >=35m: False
+chb11/chb11_82.edf | Duration: 60.0 min | Seizures: 1 | Times: 298-320s | Full preictal >=35m: False
+chb11/chb11_92.edf | Duration: 60.0 min | Seizures: 1 | Times: 2695-2727s | Full preictal >=35m: True
+chb11/chb11_99.edf | Duration: 47.65 min | Seizures: 1 | Times: 1454-2206s | Full preictal >=35m: False
+chb12/chb12_06.edf | Duration: 60.1 min | Seizures: 2 | Times: 1665-1726s; 3415-3447s | Full preictal >=35m: True
+chb12/chb12_08.edf | Duration: 60.0 min | Seizures: 4 | Times: 1426-1439s; 1591-1614s; 1957-1977s; 2798-2824s | Full preictal >=35m: True
+chb12/chb12_09.edf | Duration: 60.2 min | Seizures: 2 | Times: 3082-3114s; 3503-3535s | Full preictal >=35m: True
+chb12/chb12_10.edf | Duration: 60.18 min | Seizures: 2 | Times: 593-625s; 811-856s | Full preictal >=35m: False
+chb12/chb12_11.edf | Duration: 40.52 min | Seizures: 1 | Times: 1085-1122s | Full preictal >=35m: False
+chb12/chb12_23.edf | Duration: 60.0 min | Seizures: 3 | Times: 253-333s; 425-522s; 630-670s | Full preictal >=35m: False
+chb12/chb12_27.edf | Duration: 60.0 min | Seizures: 6 | Times: 916-951s; 1097-1124s; 1728-1753s; 1921-1963s; 2388-2440s; 2621-2669s | Full preictal >=35m: True
+chb12/chb12_28.edf | Duration: 60.0 min | Seizures: 1 | Times: 181-215s | Full preictal >=35m: False
+chb12/chb12_29.edf | Duration: 60.4 min | Seizures: 6 | Times: 107-146s; 554-592s; 1163-1199s; 1401-1447s; 1884-1921s; 3557-3584s | Full preictal >=35m: True
+chb12/chb12_33.edf | Duration: 60.0 min | Seizures: 2 | Times: 2185-2206s; 2427-2450s | Full preictal >=35m: True
+chb12/chb12_36.edf | Duration: 60.0 min | Seizures: 1 | Times: 653-680s | Full preictal >=35m: False
+chb12/chb12_38.edf | Duration: 60.0 min | Seizures: 5 | Times: 1548-1573s; 2798-2821s; 2966-3009s; 3146-3201s; 3364-3410s | Full preictal >=35m: True
+chb12/chb12_42.edf | Duration: 60.0 min | Seizures: 5 | Times: 699-750s; 945-973s; 1170-1199s; 1676-1701s; 2213-2236s | Full preictal >=35m: True
+chb13/chb13_19.edf | Duration: 60.0 min | Seizures: 1 | Times: 2077-2121s | Full preictal >=35m: False
+chb13/chb13_21.edf | Duration: 60.0 min | Seizures: 1 | Times: 934-1004s | Full preictal >=35m: False
+chb13/chb13_40.edf | Duration: 60.0 min | Seizures: 2 | Times: 142-173s; 530-594s | Full preictal >=35m: False
+chb13/chb13_55.edf | Duration: 60.0 min | Seizures: 2 | Times: 458-478s; 2436-2454s | Full preictal >=35m: True
+chb13/chb13_58.edf | Duration: 60.0 min | Seizures: 1 | Times: 2474-2491s | Full preictal >=35m: True
+chb13/chb13_59.edf | Duration: 60.0 min | Seizures: 1 | Times: 3339-3401s | Full preictal >=35m: True
+chb13/chb13_60.edf | Duration: 60.0 min | Seizures: 1 | Times: 638-660s | Full preictal >=35m: False
+chb13/chb13_62.edf | Duration: 60.0 min | Seizures: 3 | Times: 851-916s; 1626-1691s; 2664-2721s | Full preictal >=35m: True
+chb14/chb14_03.edf | Duration: 60.0 min | Seizures: 1 | Times: 1986-2000s | Full preictal >=35m: False
+chb14/chb14_04.edf | Duration: 60.0 min | Seizures: 2 | Times: 1372-1392s; 2817-2839s | Full preictal >=35m: True
+chb14/chb14_06.edf | Duration: 60.0 min | Seizures: 1 | Times: 1911-1925s | Full preictal >=35m: False
+chb14/chb14_11.edf | Duration: 60.0 min | Seizures: 1 | Times: 1838-1879s | Full preictal >=35m: False
+chb14/chb14_17.edf | Duration: 60.0 min | Seizures: 1 | Times: 3239-3259s | Full preictal >=35m: True
+chb14/chb14_18.edf | Duration: 60.0 min | Seizures: 1 | Times: 1039-1061s | Full preictal >=35m: False
+chb14/chb14_27.edf | Duration: 60.0 min | Seizures: 1 | Times: 2833-2849s | Full preictal >=35m: True
+chb15/chb15_06.edf | Duration: 60.0 min | Seizures: 1 | Times: 272-397s | Full preictal >=35m: False
+chb15/chb15_10.edf | Duration: 60.0 min | Seizures: 1 | Times: 1082-1113s | Full preictal >=35m: False
+chb15/chb15_15.edf | Duration: 60.0 min | Seizures: 1 | Times: 1591-1748s | Full preictal >=35m: False
+chb15/chb15_17.edf | Duration: 60.0 min | Seizures: 1 | Times: 1925-1960s | Full preictal >=35m: False
+chb15/chb15_20.edf | Duration: 60.0 min | Seizures: 1 | Times: 607-662s | Full preictal >=35m: False
+chb15/chb15_22.edf | Duration: 60.0 min | Seizures: 1 | Times: 760-965s | Full preictal >=35m: False
+chb15/chb15_28.edf | Duration: 60.0 min | Seizures: 1 | Times: 876-1066s | Full preictal >=35m: False
+chb15/chb15_31.edf | Duration: 60.0 min | Seizures: 1 | Times: 1751-1871s | Full preictal >=35m: False
+chb15/chb15_40.edf | Duration: 60.0 min | Seizures: 3 | Times: 834-894s; 2378-2497s; 3362-3425s | Full preictal >=35m: True
+chb15/chb15_46.edf | Duration: 60.0 min | Seizures: 1 | Times: 3322-3429s | Full preictal >=35m: True
+chb15/chb15_49.edf | Duration: 60.42 min | Seizures: 1 | Times: 1108-1248s | Full preictal >=35m: False
+chb15/chb15_52.edf | Duration: 60.15 min | Seizures: 1 | Times: 778-849s | Full preictal >=35m: False
+chb15/chb15_54.edf | Duration: 60.0 min | Seizures: 5 | Times: 263-318s; 843-1020s; 1524-1595s; 2179-2250s; 3428-3460s | Full preictal >=35m: True
+chb15/chb15_62.edf | Duration: 60.0 min | Seizures: 1 | Times: 751-859s | Full preictal >=35m: False
+chb16/chb16_10.edf | Duration: 60.0 min | Seizures: 1 | Times: 2290-2299s | Full preictal >=35m: True
+chb16/chb16_11.edf | Duration: 60.0 min | Seizures: 1 | Times: 1120-1129s | Full preictal >=35m: False
+chb16/chb16_14.edf | Duration: 60.0 min | Seizures: 1 | Times: 1854-1868s | Full preictal >=35m: False
+chb16/chb16_16.edf | Duration: 60.0 min | Seizures: 1 | Times: 1214-1220s | Full preictal >=35m: False
+chb16/chb16_17.edf | Duration: 60.0 min | Seizures: 4 | Times: 227-236s; 1694-1700s; 2162-2170s; 3290-3298s | Full preictal >=35m: True
+chb16/chb16_18.edf | Duration: 60.0 min | Seizures: 2 | Times: 627-635s; 1909-1916s | Full preictal >=35m: False
+chb17/chb17a_03.edf | Duration: 60.0 min | Seizures: 1 | Times: 2282-2372s | Full preictal >=35m: True
+chb17/chb17a_04.edf | Duration: 60.0 min | Seizures: 1 | Times: 3025-3140s | Full preictal >=35m: True
+chb17/chb17b_63.edf | Duration: 60.4 min | Seizures: 1 | Times: 3136-3224s | Full preictal >=35m: True
+chb18/chb18_29.edf | Duration: 60.0 min | Seizures: 1 | Times: 3477-3527s | Full preictal >=35m: True
+chb18/chb18_30.edf | Duration: 60.0 min | Seizures: 1 | Times: 541-571s | Full preictal >=35m: False
+chb18/chb18_31.edf | Duration: 37.9 min | Seizures: 1 | Times: 2087-2155s | Full preictal >=35m: False
+chb18/chb18_32.edf | Duration: 60.0 min | Seizures: 1 | Times: 1908-1963s | Full preictal >=35m: False
+chb18/chb18_35.edf | Duration: 60.0 min | Seizures: 1 | Times: 2196-2264s | Full preictal >=35m: True
+chb18/chb18_36.edf | Duration: 60.0 min | Seizures: 1 | Times: 463-509s | Full preictal >=35m: False
+chb19/chb19_28.edf | Duration: 60.2 min | Seizures: 1 | Times: 299-377s | Full preictal >=35m: False
+chb19/chb19_29.edf | Duration: 60.0 min | Seizures: 1 | Times: 2964-3041s | Full preictal >=35m: True
+chb19/chb19_30.edf | Duration: 55.57 min | Seizures: 1 | Times: 3159-3240s | Full preictal >=35m: True
+chb20/chb20_12.edf | Duration: 60.0 min | Seizures: 1 | Times: 94-123s | Full preictal >=35m: False
+chb20/chb20_13.edf | Duration: 60.0 min | Seizures: 2 | Times: 1440-1470s; 2498-2537s | Full preictal >=35m: True
+chb20/chb20_14.edf | Duration: 60.0 min | Seizures: 1 | Times: 1971-2009s | Full preictal >=35m: False
+chb20/chb20_15.edf | Duration: 60.0 min | Seizures: 2 | Times: 390-425s; 1689-1738s | Full preictal >=35m: False
+chb20/chb20_16.edf | Duration: 57.82 min | Seizures: 1 | Times: 2226-2261s | Full preictal >=35m: True
+chb20/chb20_68.edf | Duration: 36.12 min | Seizures: 1 | Times: 1393-1432s | Full preictal >=35m: False
+chb21/chb21_19.edf | Duration: 60.0 min | Seizures: 1 | Times: 1288-1344s | Full preictal >=35m: False
+chb21/chb21_20.edf | Duration: 49.83 min | Seizures: 1 | Times: 2627-2677s | Full preictal >=35m: True
+chb21/chb21_21.edf | Duration: 60.0 min | Seizures: 1 | Times: 2003-2084s | Full preictal >=35m: False
+chb21/chb21_22.edf | Duration: 60.0 min | Seizures: 1 | Times: 2553-2565s | Full preictal >=35m: True
+chb22/chb22_20.edf | Duration: 60.0 min | Seizures: 1 | Times: 3367-3425s | Full preictal >=35m: True
+chb22/chb22_25.edf | Duration: 60.0 min | Seizures: 1 | Times: 3139-3213s | Full preictal >=35m: True
+chb22/chb22_38.edf | Duration: 60.0 min | Seizures: 1 | Times: 1263-1335s | Full preictal >=35m: False
+chb23/chb23_06.edf | Duration: 124.77 min | Seizures: 1 | Times: 3962-4075s | Full preictal >=35m: True
+chb23/chb23_08.edf | Duration: 172.37 min | Seizures: 2 | Times: 325-345s; 5104-5151s | Full preictal >=35m: True
+chb23/chb23_09.edf | Duration: 240.43 min | Seizures: 4 | Times: 2589-2660s; 6885-6947s; 8505-8532s; 9580-9664s | Full preictal >=35m: True
+chb24/chb24_01.edf | Duration: 60.0 min | Seizures: 2 | Times: 480-505s; 2451-2476s | Full preictal >=35m: True
+chb24/chb24_03.edf | Duration: 60.0 min | Seizures: 2 | Times: 231-260s; 2883-2908s | Full preictal >=35m: True
+chb24/chb24_04.edf | Duration: 60.0 min | Seizures: 3 | Times: 1088-1120s; 1411-1438s; 1745-1764s | Full preictal >=35m: False
+chb24/chb24_06.edf | Duration: 60.0 min | Seizures: 1 | Times: 1229-1253s | Full preictal >=35m: False
+chb24/chb24_07.edf | Duration: 60.0 min | Seizures: 1 | Times: 38-60s | Full preictal >=35m: False
+chb24/chb24_09.edf | Duration: 60.0 min | Seizures: 1 | Times: 1745-1764s | Full preictal >=35m: False
+chb24/chb24_11.edf | Duration: 60.0 min | Seizures: 1 | Times: 3527-3597s | Full preictal >=35m: True
+chb24/chb24_13.edf | Duration: 60.0 min | Seizures: 1 | Times: 3288-3304s | Full preictal >=35m: True
+chb24/chb24_14.edf | Duration: 60.0 min | Seizures: 1 | Times: 1939-1966s | Full preictal >=35m: False
+chb24/chb24_15.edf | Duration: 60.0 min | Seizures: 1 | Times: 3552-3569s | Full preictal >=35m: True
+chb24/chb24_17.edf | Duration: 60.0 min | Seizures: 1 | Times: 3515-3581s | Full preictal >=35m: True
+chb24/chb24_21.edf | Duration: 60.0 min | Seizures: 1 | Times: 2804-2872s | Full preictal >=35m: True

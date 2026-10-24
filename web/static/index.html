@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeuroX | Epileptic Seizure Staging & Prediction Console</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body class="theme-dark">
+
+  <!-- Top Navigation & Telemetry Banner -->
+  <header class="app-header">
+    <div class="header-left">
+      <div class="logo-mark">
+        <svg class="pulse-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+        </svg>
+      </div>
+      <div class="logo-titles">
+        <div class="logo-title-row">
+          <h1 class="app-title">NEUROX</h1>
+          <span class="badge badge-primary">CLINICAL STAGING ENGINE</span>
+          <span class="badge badge-success">CHB-MIT 18-CH HARMONIZED</span>
+        </div>
+        <p class="app-subtitle">Real-Time EEG Reading Analyzer, Seizure Forecasting & Multi-Model Consensus System</p>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <div class="system-telemetry">
+        <div class="telemetry-item">
+          <span class="telemetry-label">ACTIVE PATIENT COHORT</span>
+          <span class="telemetry-val text-cyan" id="cohortStatus">12 Patients (chb01–chb12)</span>
+        </div>
+        <div class="telemetry-item">
+          <span class="telemetry-label">PERSONALIZED ACCURACY</span>
+          <span class="telemetry-val text-emerald">0.9664 AUROC (89.2% Bal Acc)</span>
+        </div>
+        <div class="telemetry-item">
+          <span class="telemetry-label">SYSTEM CLOCK</span>
+          <span class="telemetry-val font-mono" id="systemClock">00:00:00 UTC</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-container">
+
+    <!-- Real-Time File Upload & Analysis Zone -->
+    <section class="section-upload">
+      <div class="upload-dropzone glass-panel" id="dropZone">
+        <input type="file" id="fileInput" accept=".edf,.csv" style="display: none;">
+        <div class="dropzone-content" id="dropzoneContent">
+          <div class="upload-icon-wrap">
+            <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+          </div>
+          <div class="upload-texts">
+            <div class="upload-title-row">
+              <span class="upload-primary-text">UPLOAD EEG RECORDING FOR STAGE PREDICTION (.EDF / .CSV)</span>
+              <span class="badge badge-primary">LIVE PIPELINE INFERENCE</span>
+            </div>
+            <p class="upload-subtext">Drag &amp; drop any CHB-MIT file (e.g. <code>chb01_15.edf</code>, <code>chb04_05.edf</code>, or CSV) or <button class="btn-text-link" id="btnBrowseFile">browse from your computer</button></p>
+          </div>
+          <div class="upload-actions">
+            <button class="btn btn-primary" id="btnUploadTrigger">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+              Upload &amp; Predict Stage
+            </button>
+          </div>
+        </div>
+
+        <!-- Processing Progress Bar -->
+        <div class="upload-progress-wrap" id="uploadProgressWrap" style="display: none;">
+          <div class="progress-info">
+            <div class="progress-left">
+              <div class="spinner-sm"></div>
+              <span class="progress-text" id="progressText">Reading 18-channel EEG signals &amp; predicting stage...</span>
+            </div>
+            <span class="progress-percent font-mono" id="progressPercent">Processing</span>
+          </div>
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="progressBarFill" style="width: 75%"></div>
+          </div>
+        </div>
+
+        <!-- Uploaded File Badge Banner -->
+        <div class="uploaded-banner" id="uploadedBanner" style="display: none;">
+          <div class="uploaded-banner-left">
+            <span class="badge badge-success">ACTIVE UPLOAD</span>
+            <span class="uploaded-filename font-mono" id="uploadedFileName">chb01_15.edf</span>
+            <span class="uploaded-meta font-mono" id="uploadedMeta">• 41.4 MB • 60.0 mins (120 Windows)</span>
+          </div>
+          <button class="btn btn-sm btn-ghost" id="btnClearUploaded">Choose Another File</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clinical Demo Presets Bar -->
+    <section class="section-presets">
+      <div class="section-header-compact">
+        <div class="section-title-wrap">
+          <span class="indicator-dot"></span>
+          <h2>AUTHENTIC CLINICAL EEG PRESETS (CHB-MIT BENCHMARK)</h2>
+        </div>
+        <span class="presets-hint">Select a patient recording condition to immediately load authentic 18-channel telemetry & predict the stage</span>
+      </div>
+
+      <div class="presets-grid" id="presetsGrid">
+        <!-- Preset Cards rendered dynamically by app.js -->
+        <div class="preset-card loading-card">
+          <div class="spinner"></div>
+          <span>Loading clinical presets...</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Workspace Split: Left (Oscilloscope & Telemetry), Right (Prediction & Staging) -->
+    <div class="workspace-grid">
+
+      <!-- LEFT COLUMN: EEG Oscilloscope & Interactive Readings -->
+      <div class="workspace-col workspace-col-left">
+
+        <!-- 18-Channel Multi-Trace Waveform Oscilloscope -->
+        <div class="panel glass-panel">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <svg class="panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+              <h3>18-CHANNEL LONGITUDINAL BIPOLAR EEG TRACE</h3>
+            </div>
+            <div class="oscilloscope-controls">
+              <span class="badge badge-dark font-mono" id="recordingSource">chb01_03.edf • Win #45</span>
+              <button class="btn btn-sm btn-ghost" id="btnToggleSweep">
+                <span id="sweepIcon">⏸</span> <span id="sweepText">Pause</span>
+              </button>
+              <div class="gain-control">
+                <label for="gainSlider">Gain:</label>
+                <input type="range" id="gainSlider" min="0.5" max="2.5" step="0.1" value="1.0">
+                <span class="gain-val font-mono" id="gainVal">1.0x</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="canvas-container">
+            <canvas id="eegCanvas" width="960" height="480"></canvas>
+            <div class="canvas-grid-overlay"></div>
+            <div class="canvas-timestamp font-mono" id="canvasTimestamp">Window: [0.0s – 30.0s] • Fs: 256 Hz</div>
+          </div>
+
+          <div class="montage-legend">
+            <span class="legend-group"><strong>Left Temporal:</strong> FP1-F7, F7-T7, T7-P7, P7-O1</span>
+            <span class="legend-group"><strong>Left Parasagittal:</strong> FP1-F3, F3-C3, C3-P3, P3-O1</span>
+            <span class="legend-group"><strong>Midline:</strong> FZ-CZ, CZ-PZ</span>
+            <span class="legend-group"><strong>Right Parasagittal:</strong> FP2-F4, F4-C4, C4-P4, P4-O2</span>
+            <span class="legend-group"><strong>Right Temporal:</strong> FP2-F8, F8-T8, T8-P8, P8-O2</span>
+          </div>
+        </div>
+
+        <!-- Interactive Signal Metrics & Feature Controls -->
+        <div class="panel glass-panel">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <svg class="panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+              </svg>
+              <h3>CLINICAL NEURO-METRIC TELEMETRY & SLIDERS</h3>
+            </div>
+            <button class="btn btn-sm btn-outline" id="btnResetSliders">Reset to Preset Values</button>
+          </div>
+
+          <div class="metrics-grid">
+
+            <!-- Spectral Power Breakdown -->
+            <div class="metric-card">
+              <span class="metric-heading">SPECTRAL BAND POWER DENSITY</span>
+              <div class="band-bars">
+                <div class="band-item">
+                  <div class="band-label-wrap">
+                    <span class="band-name">Delta (0.5–4 Hz)</span>
+                    <span class="band-val font-mono" id="valDelta">22.0%</span>
+                  </div>
+                  <div class="band-bar-track"><div class="band-bar-fill bar-delta" id="barDelta" style="width: 22%"></div></div>
+                </div>
+                <div class="band-item">
+                  <div class="band-label-wrap">
+                    <span class="band-name">Theta (4–8 Hz)</span>
+                    <span class="band-val font-mono" id="valTheta">36.0%</span>
+                  </div>
+                  <div class="band-bar-track"><div class="band-bar-fill bar-theta" id="barTheta" style="width: 36%"></div></div>
+                </div>
+                <div class="band-item">
+                  <div class="band-label-wrap">
+                    <span class="band-name">Alpha (8–12 Hz)</span>
+                    <span class="band-val font-mono" id="valAlpha">18.0%</span>
+                  </div>
+                  <div class="band-bar-track"><div class="band-bar-fill bar-alpha" id="barAlpha" style="width: 18%"></div></div>
+                </div>
+                <div class="band-item">
+                  <div class="band-label-wrap">
+                    <span class="band-name">Beta (12–30 Hz)</span>
+                    <span class="band-val font-mono" id="valBeta">19.0%</span>
+                  </div>
+                  <div class="band-bar-track"><div class="band-bar-fill bar-beta" id="barBeta" style="width: 19%"></div></div>
+                </div>
+                <div class="band-item">
+                  <div class="band-label-wrap">
+                    <span class="band-name">Gamma (30–40 Hz)</span>
+                    <span class="band-val font-mono" id="valGamma">5.0%</span>
+                  </div>
+                  <div class="band-bar-track"><div class="band-bar-fill bar-gamma" id="barGamma" style="width: 5%"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Interactive Biometric Sliders -->
+            <div class="metric-card">
+              <span class="metric-heading">INTERACTIVE PARAMETER MODULATORS</span>
+              <div class="slider-group">
+                <div class="slider-item">
+                  <div class="slider-info">
+                    <label for="sliderTB">Theta / Beta Slowing Ratio (θ/β):</label>
+                    <span class="slider-val font-mono" id="valSliderTB">1.89</span>
+                  </div>
+                  <input type="range" id="sliderTB" min="0.5" max="4.0" step="0.05" value="1.89">
+                  <span class="slider-desc">Values &gt; 1.8 indicate pathological preictal slowing</span>
+                </div>
+
+                <div class="slider-item">
+                  <div class="slider-info">
+                    <label for="sliderSync">Bilateral Channel Synchrony:</label>
+                    <span class="slider-val font-mono" id="valSliderSync">0.45</span>
+                  </div>
+                  <input type="range" id="sliderSync" min="0.05" max="0.95" step="0.01" value="0.45">
+                  <span class="slider-desc">Cross-channel correlation across 18 bipolar channels</span>
+                </div>
+
+                <div class="slider-item">
+                  <div class="slider-info">
+                    <label for="sliderAsym">Hemispheric Energy Asymmetry (L/R):</label>
+                    <span class="slider-val font-mono" id="valSliderAsym">1.05</span>
+                  </div>
+                  <input type="range" id="sliderAsym" min="0.2" max="3.5" step="0.05" value="1.05">
+                  <span class="slider-desc">Lateralized focal energy imbalance</span>
+                </div>
+
+                <div class="slider-item">
+                  <div class="slider-info">
+                    <label for="sliderAmp">EEG Amplitude Scaling (Voltage Shift):</label>
+                    <span class="slider-val font-mono" id="valSliderAmp">1.00x</span>
+                  </div>
+                  <input type="range" id="sliderAmp" min="0.2" max="3.0" step="0.05" value="1.00">
+                  <span class="slider-desc">&lt; 0.6x simulates voltage attenuation; &gt; 1.8x simulates spike discharge</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="action-footer">
+            <button class="btn btn-primary btn-lg" id="btnPredict">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polygon points="10 8 16 12 10 16 10 8"/>
+              </svg>
+              PREDICT STAGE & EVALUATE SEIZURE RISK
+            </button>
+            <span class="action-status-text font-mono" id="actionStatus">Ready • Multi-model consensus enabled</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: Prediction Stage, Alarm Logic & Clinical Consensus -->
+      <div class="workspace-col workspace-col-right">
+
+        <!-- PREDICTED STAGE DISPLAY CARD -->
+        <div class="panel stage-panel glass-panel" id="stagePanel">
+          <div class="panel-header">
+            <span class="panel-subtitle">CLASSIFICATION OUTPUT</span>
+            <span class="badge badge-outline font-mono" id="modelUsedBadge">Patient-Calibrated (chb01)</span>
+          </div>
+
+          <div class="stage-body">
+            <div class="stage-badge-large" id="stageBadge">
+              <span class="stage-state" id="stageState">PREICTAL</span>
+              <span class="stage-name" id="stageName">Stage 1B: Seizure Impending Alert</span>
+            </div>
+
+            <!-- Risk Gauge & Probability Score -->
+            <div class="risk-gauge-wrap">
+              <div class="radial-gauge">
+                <svg viewBox="0 0 120 120" class="gauge-svg">
+                  <circle cx="60" cy="60" r="50" class="gauge-bg"/>
+                  <circle cx="60" cy="60" r="50" class="gauge-fill" id="gaugeCircle" stroke-dasharray="314.16" stroke-dashoffset="60"/>
+                </svg>
+                <div class="gauge-text">
+                  <span class="gauge-val font-mono" id="gaugeVal">87.4%</span>
+                  <span class="gauge-label">PREICTAL PROBABILITY</span>
+                </div>
+              </div>
+
+              <div class="risk-legend">
+                <div class="risk-tag-row">
+                  <span class="risk-pill pill-danger" id="riskLevelPill">CRITICAL ALERT</span>
+                </div>
+                <div class="lead-time-box">
+                  <span class="lead-time-label">ESTIMATED INTERVENTION HORIZON:</span>
+                  <span class="lead-time-val" id="leadTimeVal">18 – 25 minutes to onset</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Persistence Filter Status (Clinical Safety Logic) -->
+          <div class="persistence-card" id="persistenceCard">
+            <div class="persistence-header">
+              <div class="persistence-title-wrap">
+                <span class="persistence-icon" id="persistenceIcon">⚠️</span>
+                <strong>PERSISTENCE FILTER (k=2 CONSECUTIVE WINDOWS)</strong>
+              </div>
+              <span class="badge badge-danger" id="alarmStateBadge">ALARM ACTIVE</span>
+            </div>
+            <p class="persistence-desc" id="persistenceDesc">
+              Active Clinical Seizure Warning triggered (sustained probability &ge; 50% across 2 consecutive 30-second windows).
+            </p>
+            <div class="persistence-steps">
+              <div class="step-pill step-active" id="step1">Window t-1: Positive (84.1%)</div>
+              <div class="step-pill step-active" id="step2">Window t: Positive (87.4%)</div>
+              <span class="step-note">→ Verified sustained preictal transition</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- MULTI-MODEL CONSENSUS BREAKDOWN -->
+        <div class="panel glass-panel">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <svg class="panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10"/>
+                <line x1="12" y1="20" x2="12" y2="4"/>
+                <line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+              <h3>MULTI-MODEL CLINICAL CONSENSUS</h3>
+            </div>
+            <span class="badge badge-dark">4 ARCHITECTURES</span>
+          </div>
+
+          <div class="consensus-list" id="consensusList">
+            <!-- Rendered by app.js -->
+            <div class="consensus-item">
+              <div class="consensus-header">
+                <span class="model-name">Personalized Patient Calibrator (chb01)</span>
+                <span class="model-prob font-mono" id="probPers">87.4%</span>
+              </div>
+              <div class="consensus-track"><div class="consensus-fill fill-pers" id="barPers" style="width: 87.4%"></div></div>
+              <span class="consensus-note">Stratified CV AUROC: 0.9577 • Specificity: 91.0%</span>
+            </div>
+
+            <div class="consensus-item">
+              <div class="consensus-header">
+                <span class="model-name">Balanced Random Forest Pipeline (453-Feat)</span>
+                <span class="model-prob font-mono" id="probRF">74.2%</span>
+              </div>
+              <div class="consensus-track"><div class="consensus-fill fill-rf" id="barRF" style="width: 74.2%"></div></div>
+              <span class="consensus-note">Zero-leakage test AUROC: 0.6135 • Specificity: 73.5%</span>
+            </div>
+
+            <div class="consensus-item">
+              <div class="consensus-header">
+                <span class="model-name">1D Multichannel CNN Baseline</span>
+                <span class="model-prob font-mono" id="probCNN">73.3%</span>
+              </div>
+              <div class="consensus-track"><div class="consensus-fill fill-cnn" id="barCNN" style="width: 73.3%"></div></div>
+              <span class="consensus-note">Multichannel representation • Val AUROC: 0.7336</span>
+            </div>
+
+            <div class="consensus-item">
+              <div class="consensus-header">
+                <span class="model-name">Spatial-Temporal CNN-LSTM Candidate</span>
+                <span class="model-prob font-mono" id="probLSTM">89.9%</span>
+              </div>
+              <div class="consensus-track"><div class="consensus-fill fill-lstm" id="barLSTM" style="width: 89.9%"></div></div>
+              <span class="consensus-note">Sequence length: 5 windows • Test Sensitivity: 82.65%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CLINICAL ACTION PROTOCOL -->
+        <div class="panel glass-panel">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <svg class="panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              <h3>CLINICAL ACTION & SAFETY PROTOCOL</h3>
+            </div>
+            <button class="btn btn-sm btn-ghost" id="btnPrintReport">Print Summary</button>
+          </div>
+
+          <div class="protocol-box">
+            <ul class="protocol-list" id="protocolList">
+              <li>IMMINENT SEIZURE RISK: High electrographic precursor signature confirmed.</li>
+              <li>Verify patient is seated or resting in safe position (away from sharp objects).</li>
+              <li>Alert on-duty nursing staff and designated emergency caregiver.</li>
+              <li>Prepare acute rescue therapy protocol if prescribed (e.g., intranasal midazolam).</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Clean Modal for Printable Clinical Report -->
+  <div class="modal-overlay" id="reportModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>CLINICAL SEIZURE PREDICTION ASSESSMENT REPORT</h3>
+        <button class="btn-close" id="btnCloseModal">&times;</button>
+      </div>
+      <div class="modal-body" id="modalReportContent">
+        <!-- Injected report text -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="btnPrintWindow">Print Document</button>
+        <button class="btn btn-primary" id="btnCloseModal2">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

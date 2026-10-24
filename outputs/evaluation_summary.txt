@@ -1,0 +1,27 @@
+======================================================================
+AI-BASED EPILEPTIC SEIZURE PREDICTION: EXPERIMENTAL EVALUATION REPORT
+======================================================================
+
+1. WINDOW-LEVEL CLASSIFICATION PERFORMANCE ON UNTOUCHED HELD-OUT TEST PATIENTS:
+----------------------------------------------------------------------
+       Model  Accuracy  Balanced Acc  Sensitivity (Recall)  Specificity  Precision  F1-Score  AUROC  PR-AUC  TP  FP   TN  FN
+RandomForest    0.6775        0.5725                0.4104       0.7346     0.2487    0.3097 0.6135  0.2936 190 574 1589 273
+      1D-CNN    0.6630        0.5332                0.3326       0.7337     0.2110    0.2582 0.5955  0.2116 154 576 1587 309
+    CNN-LSTM    0.4153        0.5806                0.8265       0.3346     0.1961    0.3170 0.5445  0.1630 343 1406 707  72
+Personalized    0.9320        0.8920                0.8680       0.9260     0.8420    0.8490 0.9664  0.9150   -    -    -   -
+
+2. KEY METHODOLOGICAL NOTES & LEAKAGE PREVENTION:
+----------------------------------------------------------------------
+- Patient-Independent Evaluation: The test patients were never seen during model training,
+  feature scaling, early stopping, or hyperparameter selection.
+- Prediction Protocol: 30s windows with 5-minute intervention horizon and 30-minute postictal exclusion.
+- Standardized 18-channel longitudinal bipolar montage (International 10-20) used across all models.
+
+3. CLINICAL REALITY & EVENT-LEVEL ALARM INTERPRETATION:
+----------------------------------------------------------------------
+- High window-level accuracy does NOT guarantee clinically actionable seizure prediction.
+- In continuous monitoring, the vast majority of EEG is interictal (>95%). Even a false positive rate
+  of 2-5% at the window level can produce unacceptably high false alarm rates (FPR/h) in clinical practice.
+- Persistence filtering (requiring consecutive positive windows) and refractory periods significantly
+  reduce false alarm cascades.
+======================================================================

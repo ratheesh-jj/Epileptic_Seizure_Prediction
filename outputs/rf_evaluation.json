@@ -1,0 +1,107 @@
+{
+  "model": "RandomForest",
+  "train_patients": [
+    "chb01",
+    "chb03",
+    "chb05",
+    "chb06",
+    "chb07",
+    "chb08",
+    "chb09",
+    "chb10"
+  ],
+  "val_patients": [
+    "chb02",
+    "chb11"
+  ],
+  "test_patients": [
+    "chb04",
+    "chb12"
+  ],
+  "hyperparameters": {
+    "n_estimators": 100,
+    "max_depth": 15,
+    "seed": 42
+  },
+  "optimal_threshold": 0.72,
+  "validation_metrics": {
+    "accuracy": 0.6303,
+    "balanced_accuracy": 0.449,
+    "sensitivity_recall": 0.0744,
+    "specificity": 0.8236,
+    "precision": 0.128,
+    "f1_score": 0.0941,
+    "auroc": 0.3377,
+    "pr_auc": 0.1897,
+    "confusion_matrix": {
+      "TN": 509,
+      "FP": 109,
+      "FN": 199,
+      "TP": 16
+    }
+  },
+  "validation_metrics_tuned_threshold": {
+    "accuracy": 0.7419,
+    "balanced_accuracy": 0.5,
+    "sensitivity_recall": 0.0,
+    "specificity": 1.0,
+    "precision": 0.0,
+    "f1_score": 0.0,
+    "auroc": 0.3377,
+    "pr_auc": 0.1897,
+    "confusion_matrix": {
+      "TN": 618,
+      "FP": 0,
+      "FN": 215,
+      "TP": 0
+    }
+  },
+  "test_metrics": {
+    "accuracy": 0.6775,
+    "balanced_accuracy": 0.5725,
+    "sensitivity_recall": 0.4104,
+    "specificity": 0.7346,
+    "precision": 0.2487,
+    "f1_score": 0.3097,
+    "auroc": 0.6135,
+    "pr_auc": 0.2936,
+    "confusion_matrix": {
+      "TN": 1589,
+      "FP": 574,
+      "FN": 273,
+      "TP": 190
+    }
+  },
+  "test_metrics_tuned_threshold": {
+    "accuracy": 0.8233,
+    "balanced_accuracy": 0.5329,
+    "sensitivity_recall": 0.0842,
+    "specificity": 0.9815,
+    "precision": 0.4937,
+    "f1_score": 0.1439,
+    "auroc": 0.6135,
+    "pr_auc": 0.2936,
+    "confusion_matrix": {
+      "TN": 2123,
+      "FP": 40,
+      "FN": 424,
+      "TP": 39
+    }
+  },
+  "hist_gradient_boosting_test_metrics": {
+    "accuracy": 0.7982,
+    "balanced_accuracy": 0.5507,
+    "sensitivity_recall": 0.1685,
+    "specificity": 0.933,
+    "precision": 0.3498,
+    "f1_score": 0.2274,
+    "auroc": 0.5809,
+    "pr_auc": 0.2372,
+    "confusion_matrix": {
+      "TN": 2018,
+      "FP": 145,
+      "FN": 385,
+      "TP": 78
+    }
+  }
+}

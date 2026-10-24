@@ -1,0 +1,103 @@
+{
+  "model": "CNN-LSTM",
+  "train_patients": [
+    "chb01",
+    "chb03",
+    "chb05",
+    "chb06",
+    "chb07",
+    "chb08",
+    "chb09",
+    "chb10"
+  ],
+  "val_patients": [
+    "chb02",
+    "chb11"
+  ],
+  "test_patients": [
+    "chb04",
+    "chb12"
+  ],
+  "hyperparameters": {
+    "in_channels": 18,
+    "seq_len": 5,
+    "epochs": 5,
+    "batch_size": 16,
+    "lr": 0.001
+  },
+  "optimal_threshold": 0.32,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.939,
+      "val_loss": 2.0658,
+      "val_bal_acc": 0.5741,
+      "val_recall": 0.191,
+      "val_auroc": 0.719
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.7489,
+      "val_loss": 2.2847,
+      "val_bal_acc": 0.5928,
+      "val_recall": 0.2915,
+      "val_auroc": 0.7525
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.6969,
+      "val_loss": 1.0105,
+      "val_bal_acc": 0.77,
+      "val_recall": 0.7739,
+      "val_auroc": 0.8098
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.6504,
+      "val_loss": 2.3783,
+      "val_bal_acc": 0.5979,
+      "val_recall": 0.2965,
+      "val_auroc": 0.7363
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.6168,
+      "val_loss": 2.0645,
+      "val_bal_acc": 0.6441,
+      "val_recall": 0.3719,
+      "val_auroc": 0.7661
+    }
+  ],
+  "test_metrics": {
+    "accuracy": 0.4153,
+    "balanced_accuracy": 0.5806,
+    "sensitivity_recall": 0.8265,
+    "specificity": 0.3346,
+    "precision": 0.1961,
+    "f1_score": 0.317,
+    "auroc": 0.5445,
+    "pr_auc": 0.163,
+    "confusion_matrix": {
+      "TN": 707,
+      "FP": 1406,
+      "FN": 72,
+      "TP": 343
+    }
+  },
+  "test_metrics_tuned_threshold": {
+    "accuracy": 0.358,
+    "balanced_accuracy": 0.5617,
+    "sensitivity_recall": 0.8651,
+    "specificity": 0.2584,
+    "precision": 0.1864,
+    "f1_score": 0.3067,
+    "auroc": 0.5445,
+    "pr_auc": 0.163,
+    "confusion_matrix": {
+      "TN": 546,
+      "FP": 1567,
+      "FN": 56,
+      "TP": 359
+    }
+  }
+}

@@ -1,0 +1,37 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.bak
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Dataset files (Raw CHB-MIT EEG recordings ~44 GB)
+dataset/*
+!dataset/.gitkeep
+
+# Processed Windows & Large Intermediate Artifacts (~14 GB)
+outputs/windows/*
+!outputs/windows/.gitkeep
+outputs/uploads/*
+!outputs/uploads/.gitkeep
+outputs/*.npz
+
+# Operating System & Editor Files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Logs & Temporary files
+*.log
+*.tmp

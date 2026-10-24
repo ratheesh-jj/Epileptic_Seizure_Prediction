@@ -1,0 +1,51 @@
+{
+  "status": "SUCCESS",
+  "processed_recordings": 86,
+  "processed_patients": [
+    "chb01",
+    "chb02",
+    "chb03",
+    "chb04",
+    "chb05",
+    "chb06",
+    "chb07",
+    "chb08",
+    "chb09",
+    "chb10",
+    "chb11",
+    "chb12"
+  ],
+  "total_windows": 14564,
+  "preictal_windows": 2957,
+  "interictal_windows": 11607,
+  "window_duration_sec": 30.0,
+  "window_stride_sec": 30.0,
+  "preictal_protocol_min_before_onset": [
+    35.0,
+    5.0
+  ],
+  "prediction_horizon_min": 5.0,
+  "postictal_exclusion_min": 30.0,
+  "channels_used": [
+    "FP1-F7",
+    "F7-T7",
+    "T7-P7",
+    "P7-O1",
+    "FP1-F3",
+    "F3-C3",
+    "C3-P3",
+    "P3-O1",
+    "FP2-F4",
+    "F4-C4",
+    "C4-P4",
+    "P4-O2",
+    "FP2-F8",
+    "F8-T8",
+    "T8-P8",
+    "P8-O2",
+    "FZ-CZ",
+    "CZ-PZ"
+  ],
+  "n_channels": 18,
+  "skipped_recordings_count": 4
+}
